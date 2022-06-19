@@ -1,0 +1,37 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    hibernate:
+      ddl-auto: validate
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  flyway:
+    enabled: true
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    hikari:
+      schema: urap_backend
+    url: 'jdbc:postgresql://${db_host:localhost}:5432/urap_backend'
+    driverClassName: org.postgresql.Driver
+    username: urap_backend
+    password: urap_backend_secret
+
+server:
+  error:
+    include-message: always
+
+logging:
+  level:
+    root: INFO
+    ru:
+      pulkovo:
+        rivc:
+          urap: TRACE
+
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /urap/v2/api-docs
